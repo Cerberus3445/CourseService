@@ -11,6 +11,7 @@ import ru.gentleman.course.validator.LessonUpdateValidator;
 
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
 @Slf4j
 @Component
@@ -20,11 +21,11 @@ public class DefaultLessonUpdateValidator implements LessonUpdateValidator {
     private final LessonService lessonService;
 
     @Override
-    public void validate(LessonDto lessonDto) {
+    public void validate(UUID id, LessonDto lessonDto) {
         log.info("validate {}", lessonDto);
         Optional<Lesson> foundLesson = this.lessonService.getByTitle(lessonDto.title());
 
-        if(foundLesson.isPresent() && !Objects.equals(lessonDto.id(), foundLesson.get().getId())
+        if(foundLesson.isPresent() && !Objects.equals(id, foundLesson.get().getId())
                 && lessonDto.title().equalsIgnoreCase(foundLesson.get().getTitle())){
             throw ExceptionUtils.alreadyExists("error.lesson.already_exist", lessonDto.title());
         }

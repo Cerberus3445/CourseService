@@ -11,6 +11,7 @@ import ru.gentleman.course.validator.CourseUpdateValidator;
 
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
 @Slf4j
 @Component
@@ -20,11 +21,11 @@ public class DefaultCourseUpdateValidator implements CourseUpdateValidator {
     private final CourseService courseService;
 
     @Override
-    public void validate(CourseDto courseDto) {
+    public void validate(UUID id, CourseDto courseDto) {
         log.info("validate {}", courseDto);
         Optional<Course> foundCourse = this.courseService.getByTitle(courseDto.title());
 
-        if(foundCourse.isPresent() && !Objects.equals(courseDto.id(), foundCourse.get().getId())
+        if(foundCourse.isPresent() && !Objects.equals(id, foundCourse.get().getId())
                 && courseDto.title().equalsIgnoreCase(foundCourse.get().getTitle())){
             throw ExceptionUtils.alreadyExists("error.lesson.already_exist", courseDto.title());
         }
