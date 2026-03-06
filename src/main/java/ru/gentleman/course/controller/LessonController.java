@@ -81,7 +81,7 @@ public class LessonController {
 
         return ResponseEntity.ok(
                 this.messageSource.getMessage(
-                        "info.lesson.update",
+                        "info.lesson.updated",
                         null,
                         Locale.getDefault()
                 )

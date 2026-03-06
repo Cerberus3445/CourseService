@@ -1,0 +1,48 @@
+spring:
+  application:
+   name: Gentleman - CourseService
+  profiles:
+    active: dev
+  config:
+    import: application-prod.yml
+  cache:
+    type: redis
+    cache-names: redis-cache
+  jpa:
+    database-platform: ru.gentleman.user.config.AxonPostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    open-in-view: false
+  datasource:
+    url: jdbc:postgresql://localhost:5434/course
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    url: jdbc:postgresql://localhost:5434/course
+    user: postgres
+    password: password
+    baseline-on-migrate: true
+    locations: classpath:db/migration,classpath:others/path
+    baseline-version: 0
+  messages:
+    basename: messages
+    encoding: UTF-8
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9000/oauth2/jwks
+server:
+  port: 6060
+
+redisson:
+  host: 127.0.0.1
+  port: 6379
+  username: default
+  password: password
+
+otel:
+  sdk:
+    disabled: true

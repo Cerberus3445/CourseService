@@ -64,7 +64,7 @@ public class CourseController {
 
         return ResponseEntity.ok(
                 this.messageSource.getMessage(
-                        "info.course.image.upload",
+                        "info.course.image.uploaded",
                         null,
                         Locale.getDefault()
                 )
@@ -78,7 +78,7 @@ public class CourseController {
         this.courseService.deleteImage(id, link);
         return ResponseEntity.ok(
                 this.messageSource.getMessage(
-                        "info.course.image.delete",
+                        "info.course.image.deleted",
                         null,
                         Locale.getDefault()
                 )
@@ -123,7 +123,7 @@ public class CourseController {
 
         return ResponseEntity.ok(
                 this.messageSource.getMessage(
-                        "info.course.update",
+                        "info.course.updated",
                         null,
                         Locale.getDefault()
                 )
