@@ -6,9 +6,11 @@ import java.util.UUID;
 
 public record LessonDto(
         UUID id,
-        UUID courserId,
+        UUID courseId,
 
         String title,
+
+        String description,
         JsonNode content
 ) {
 }

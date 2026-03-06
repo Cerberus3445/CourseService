@@ -5,12 +5,14 @@ import org.mapstruct.Mapping;
 import ru.gentleman.course.dto.CourseDto;
 import ru.gentleman.course.entity.Course;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface CourseMapper {
 
-    @Mapping(target = "course.id", source = "courseId")
     Course toEntity(CourseDto dto);
 
-    @Mapping(target = "courseId", source = "course.id")
     CourseDto toDto(Course entity);
+
+    List<CourseDto> toDto(List<Course> entities);
 }

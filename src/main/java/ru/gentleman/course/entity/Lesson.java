@@ -25,6 +25,8 @@ public class Lesson {
 
     private String title;
 
+    private String description;
+
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "content", columnDefinition = "jsonb")
     private JsonNode content;
