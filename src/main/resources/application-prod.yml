@@ -14,15 +14,17 @@ spring:
     show-sql: false
     open-in-view: false
   datasource:
-    url: jdbc:postgresql://localhost:5432/user
+    url: jdbc:postgresql://localhost:5435/user
     username: postgres
     password: password
     driver-class-name: org.postgresql.Driver
   flyway:
-    url: jdbc:postgresql://localhost:5432/user
+    url: jdbc:postgresql://localhost:5435/user
     user: postgres
     password: password
     baseline-on-migrate: true
+    locations: classpath:db/migration,classpath:others/path
+    baseline-version: 0
   messages:
     basename: messages
     encoding: UTF-8
@@ -33,6 +35,12 @@ spring:
           jwk-set-uri: http://localhost:9000/oauth2/jwks
 server:
   port: 6060
+
+s3:
+  access-key: b0a085fad6914c2abd49b762ee2263e2
+  secret-key: 2bd487564bb54e9a8231bb3944108971
+  region: ru-7
+  bucket-name: stroy1click
 
 redisson:
   host: 127.0.0.1
